@@ -1,0 +1,15 @@
+[project]
+name = "corpus-website"
+version = "0.1.0"
+description = "Tooling to expose the corpus as a website"
+authors = [
+    {name = "Adrien", email = "adrien@rouage.xyz"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "UNLICENSED"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
