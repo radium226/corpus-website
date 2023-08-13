@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <title>Corpus</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Miniature</th>
+                    <th>Auteur</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in documents %}
+                <tr>
+                    <td>...</td>
+                    <td>{{ document.author.first_name ~ ' ' ~ document.author.last_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
