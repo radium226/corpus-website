@@ -13,9 +13,11 @@
                 </tr>
             </thead>
             <tbody>
-                {% for document in documents %}
+                {% for document in documents -%}
                 <tr>
-                    <td>...</td>
+                    <td>
+                        <img src="{{ document.thumbnail | static_image('png') }}" />
+                    </td>
                     <td>{{ document.author.first_name ~ ' ' ~ document.author.last_name }}</td>
                 </tr>
                 {% endfor %}
