@@ -1,8 +1,4 @@
-from dataclasses import dataclass
+from typing import NewType
 
 
-@dataclass
-class Author():
-
-    first_name: str
-    last_name: str
+Author = NewType("Author", str)

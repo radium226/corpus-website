@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang=en>
     <head>
-        <meta charset=utf-8>
+        <meta charset=utf-8 />
         <title>Corpus</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
         <table>
@@ -18,7 +20,7 @@
                     <td>
                         <img src="{{ document.thumbnail | static_image('png') }}" />
                     </td>
-                    <td>{{ document.author.first_name ~ ' ' ~ document.author.last_name }}</td>
+                    <td>{{ document.author }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

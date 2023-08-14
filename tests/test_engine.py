@@ -21,10 +21,7 @@ def documents(thumbnail: Thumbnail):
         Document(
             thumbnail=thumbnail,
             date=today(),
-            author=Author(
-                first_name=faker.first_name(),
-                last_name=faker.last_name(),
-            ),
+            author=Author(faker.name()),
             country=Country(faker.country()),
         )
         for _ in range(0, 25)
