@@ -4,7 +4,7 @@ from faker import Faker
 from pathlib import Path
 from PIL import Image
 
-from corpus_website.models import Document, Author, Country, Thumbnail
+from corpus_website.models import *
 from corpus_website.engine import Engine
 
 
@@ -22,7 +22,17 @@ def documents(thumbnail: Thumbnail):
             thumbnail=thumbnail,
             date=today(),
             author=Author(faker.name()),
+            job=Job("Job"),
             country=Country(faker.country()),
+            title=Title("Pipou"),
+            source=Source("Source"),
+            medium=Medium("Medium"),
+            publication=Publication("Publication"),
+            criticized_themes=[CriticizedTheme("Criticized Theme")],
+            aesthetic_paradigms=[AestheticParadigm("Aesthetic Paradigm")],
+            aesthetic_patterns=[AestheticPattern("Aesthetic Pattern")],
+            registers=[Register("Register")],
+            interpretation=Interpretation("Interpretation"),
         )
         for _ in range(0, 25)
     ]

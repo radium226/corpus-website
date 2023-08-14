@@ -2,3 +2,13 @@ from .document import Document
 from .author import Author
 from .country import Country
 from .thumbnail import Thumbnail
+from .job import Job
+from .title import Title
+from .source import Source
+from .medium import Medium
+from .publication import Publication
+from .criticized_theme import CriticizedTheme
+from .aesthetic_paradigm import AestheticParadigm
+from .aesthetic_pattern import AestheticPattern
+from .register import Register
+from .interpretation import Interpretation
