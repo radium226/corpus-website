@@ -7,9 +7,12 @@ from PIL import Image
 from ..models import *
 
 
-def parse_date(text: str) -> p.Date:
+def parse_date(text: str) -> p.Date | None:
     # return p.instance(dp.parse(text))
-    return p.parse(text, format="%Y")
+    try:
+        return p.parse(text, format="%Y")
+    except:
+        return None
 
 # - [x] Miniature
 # - [x] Date
@@ -46,10 +49,10 @@ class Store():
                 source=Source(row[6]),
                 medium=Medium(row[7]),
                 publication=Publication(row[8]),
-                criticized_themes=list(CriticizedTheme(row[9])),
-                aesthetic_paradigms=list(AestheticParadigm(row[10])),
-                aesthetic_patterns=list(AestheticPattern(row[11])),
-                registers=list(Country(row[12])),
+                criticized_themes=[CriticizedTheme(row[9])],
+                aesthetic_paradigms=[AestheticParadigm(row[10])],
+                aesthetic_patterns=[AestheticPattern(row[11])],
+                registers=[Register(row[12])],
                 interpretation=Interpretation(row[13]),
             )
             for row in worksheet.iter_rows(min_row=2, values_only=True)

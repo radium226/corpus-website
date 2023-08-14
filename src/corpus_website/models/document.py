@@ -35,7 +35,7 @@ from .interpretation import Interpretation
 class Document():
 
     thumbnail: Thumbnail
-    date: Date
+    date: Date | None
     author: Author
     job: Job
     country: Country

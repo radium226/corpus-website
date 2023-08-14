@@ -11,7 +11,19 @@
             <thead>
                 <tr>
                     <th>Miniature</th>
+                    <th>Date</th>
                     <th>Auteur</th>
+                    <th>Profession</th>
+                    <th>Pays</th>
+                    <th>Titre</th>
+                    <th>Source</th>
+                    <th>Medium</th>
+                    <th>Publication</th>
+                    <th>Thème(s) critique(s) (idées primaires)</th>
+                    <th>Paradigme esthétique (idées primaires)</th>
+                    <th>Motifs esthétiques</th>
+                    <th>Registre(s)</th>
+                    <th>Interprétation</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +32,43 @@
                     <td>
                         <img src="{{ document.thumbnail | static_image('png') }}" />
                     </td>
+                    <td>{{ document.date }}</td>
                     <td>{{ document.author }}</td>
+                    <td>{{ document.job }}</td>
+                    <td>{{ document.country }}</td>
+                    <td>{{ document.title }}</td>
+                    <td>{{ document.source }}</td>
+                    <td>{{ document.medium }}</td>
+                    <td>{{ document.publication }}</td>
+                    <td>
+                        <ul>
+                            {% for critiziced_theme in document.critiziced_themes -%}
+                            <li>{{ critiziced_theme }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for aesthetic_paradigm in document.aesthetic_paradigms -%}
+                            <li>{{ aesthetic_paradigm }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for aesthetic_pattern in document.aesthetic_patterns -%}
+                            <li>{{ aesthetic_pattern }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for register in document.registers -%}
+                            <li>{{ register }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>{{ document.intepretation }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
