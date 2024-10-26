@@ -28,7 +28,7 @@ def documents(thumbnail: Thumbnail):
             source=Source("Source"),
             medium=Medium("Medium"),
             publication=Publication("Publication"),
-            criticized_themes=[CriticizedTheme("Criticized Theme")],
+            themes=[Theme("Theme")],
             aesthetic_paradigms=[AestheticParadigm("Aesthetic Paradigm")],
             aesthetic_patterns=[AestheticPattern("Aesthetic Pattern")],
             registers=[Register("Register")],

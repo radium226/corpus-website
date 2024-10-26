@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8 />
+        <title>PhD database</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+         <meta name="keywords" content="Lorène Picard, transparency, capitalism critic, art, new media, arts médiatiques, design, research, doctorat, PhD" />
+
+
+   <!-- responsive pour écrans mobiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+
+    <script>
+            $(document).ready(function(){
+                var grid = $('#corpus').isotope({
+                    // options
+                    itemSelector: '.entry',
+                    layoutMode: 'masonry'
+                });
+
+                $('#navigator li').click(function(){
+                    var theme = $(this).attr('data-theme');
+                    console.log("theme = " + theme);
+                    grid.isotope({ filter: function() {
+                        var themeElements = $(this).find('.themes').first().find('li');
+                        console.log(themeElements);
+                        for (themeElement of themeElements) {
+                            console.log($(themeElement).attr('data-theme'));
+                            if ($(themeElement).attr('data-theme') == theme) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    } });
+                });
+            });
+        </script>    
+
+    </head>
+
+    <body>
+
+        <header id=header>
+            <main-title id="main-title"><p>Web et transparence. Conscience critique en art et design (1995-2019) — classification des œuvres</p></main-title>
+        </header>
+
+
+        <nav id="navigator">
+            <ul id="text-navigator">
+                {% for available_theme in available_themes %}
+                <li data-theme="{{ available_theme }}">{{ available_theme }}</li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <main id="corpus">
+        {% for document in documents -%}
+            <div class="entry">
+                <h2>{{ document.title }}</h2>
+                <img src="{{ document.thumbnail | static_image('png') }}" />
+                <ul class="themes">
+                    {% for theme in document.themes -%}
+                    <li data-theme="{{ theme }}">{{ theme }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+        </main>
+
+        <footer id="footer"><p>Lorène Picard, Thèse de doctorat de l'Université Jean Monnet, Unité de Recherche ECLLA / École Supérieure d'Art et de Design Saint-Étienne, Random(Lab), Unité de recherche numérique art et design Saint-Étienne/ENSBA Lyon</p></footer>
+
+
+    </body>
+</html>

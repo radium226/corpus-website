@@ -49,7 +49,10 @@ class Store():
                 source=Source(row[6]),
                 medium=Medium(row[7]),
                 publication=Publication(row[8]),
-                criticized_themes=[CriticizedTheme(row[9])],
+                themes=[
+                    Theme(line.strip())
+                    for line in text.split(",")
+                ] if (text := row[9]) else [],
                 aesthetic_paradigms=[AestheticParadigm(row[10])],
                 aesthetic_patterns=[AestheticPattern(row[11])],
                 registers=[Register(row[12])],

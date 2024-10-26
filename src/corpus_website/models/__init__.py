@@ -7,7 +7,7 @@ from .title import Title
 from .source import Source
 from .medium import Medium
 from .publication import Publication
-from .criticized_theme import CriticizedTheme
+from .theme import Theme
 from .aesthetic_paradigm import AestheticParadigm
 from .aesthetic_pattern import AestheticPattern
 from .register import Register

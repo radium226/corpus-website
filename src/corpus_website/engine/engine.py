@@ -32,6 +32,8 @@ class Engine():
             
 
         environment.filters["static_image"] = static_image_filter
+
+        available_themes = list(set([theme for document in documents for theme in document.themes]))
         
         for input_file_path in filter(lambda p: not p.is_dir(), self.theme_folder_path.rglob("*")):
             output_file_path = output_folder_path / input_file_path.relative_to(self.theme_folder_path)
@@ -42,7 +44,10 @@ class Engine():
                     output_file_path = output_file_path.with_name(input_file_path.name.removesuffix(".j2"))
                     template = environment.get_template(str(input_file_path.relative_to(self.theme_folder_path)))
                     with output_file_path.open("w") as stream: 
-                        stream.write(template.render(documents=documents))
+                        stream.write(template.render(
+                            documents=documents,
+                            available_themes=available_themes,
+                        ))
                     
                 case _: 
                     copy(input_file_path, output_file_path)                    

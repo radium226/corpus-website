@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8 />
+        <title>PhD database</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+         <meta name="keywords" content="Lorène Picard, transparency, capitalism critic, art, new media, arts médiatiques, design, research, doctorat, PhD" />
+
+
+   <!-- responsive pour écrans mobiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-3.7.0.min.js" type="text/javascript"></script>
+
+
+    <!-- masonry script-->
+    <script>
+            $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200
+        });
+
+    </script>
+
+
+    </head>
+
+    <body>
+
+        <header id=header>
+            <main-title id="main-title"><p>Web et transparence. Conscience critique en art et design (1995-2019) — classification des œuvres</p></main-title>
+        </header>
+
+
+        <nav id="navigator">
+             <ul id="text-navigator">
+                <li>Visualiser l’étendue du Web (adresses IP, données du Web). Territorialiser les activités humaines sur le Web</li>
+                <li>Procès des modes de production industriels du Web (critique du cloud)</li>
+                <li>Procès de production des idéologies et mythologie du Web : critique de l’innovation, critique de la surveillance sur le Web</li>
+                <li>Survivre dans le capitalisme numérique. Intégrité corporelle et aliénation. Critique du capitalisme monopolistique du Web</li>
+
+             </ul>
+        </nav>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Miniature</th>
+                    <th>Date</th>
+                    <th>Auteur</th>
+                    <th>Profession</th>
+                    <th>Pays</th>
+                    <th>Titre</th>
+                    <th>Source</th>
+                    <th>Medium</th>
+                    <th>Publication</th>
+                    <th>Thème(s) critique(s) (idées primaires)</th>
+                    <th>Paradigme esthétique (idées primaires)</th>
+                    <th>Motifs esthétiques</th>
+                    <th>Registre(s)</th>
+                    <th>Interprétation</th>
+                </tr>
+            </thead>
+
+            <tbody id="main-grid">
+
+                {% for document in documents -%}
+                <tr>
+                        <!-- masonry.js code-->
+
+                    <div class="grid">
+                       
+                <div class="grid-item">
+                        <td>
+                            <img src="{{ document.thumbnail | static_image('png') }}" />
+                        </td>
+                </div>    
+                        
+                    <div class="grid-item grid-item--width2"></div>
+
+
+                    <div class="grid-item">
+                        <td>{{ document.date }}</td>
+                        <td>{{ document.author }}</td>
+                        <td>{{ document.job }}</td>
+                        <td>{{ document.country }}</td>
+                        <td>{{ document.title }}</td>
+                        <td>{{ document.source }}</td>
+                        <td>{{ document.medium }}</td>
+                        <td>{{ document.publication }}</td>
+                    </div>
+                
+                <div class="grid-item">
+                    <td>
+                        <ul>
+                            {% for theme in document.themes -%}
+                            <li>{{ theme }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for aesthetic_paradigm in document.aesthetic_paradigms -%}
+                            <li>{{ aesthetic_paradigm }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for aesthetic_pattern in document.aesthetic_patterns -%}
+                            <li>{{ aesthetic_pattern }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for register in document.registers -%}
+                            <li>{{ register }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>{{ document.intepretation }}</td>
+                </tr>
+                {% endfor %}
+                </div>    
+
+                </div> <!-- end masonry -->
+
+                  
+
+            </tbody>
+        </table>
+
+        <footer id="footer"><p>Lorène Picard, Thèse de doctorat de l'Université Jean Monnet, Unité de Recherche ECLLA / École Supérieure d'Art et de Design Saint-Étienne, Random(Lab), Unité de recherche numérique art et design Saint-Étienne/ENSBA Lyon</p></footer>
+
+
+    </body>
+
+
+
+</html>

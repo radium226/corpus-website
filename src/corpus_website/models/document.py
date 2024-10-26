@@ -9,7 +9,7 @@ from .title import Title
 from .publication import Publication
 from .source import Source
 from .medium import Medium
-from .criticized_theme import CriticizedTheme
+from .theme import Theme
 from .aesthetic_paradigm import AestheticParadigm
 from .aesthetic_pattern import AestheticPattern
 from .register import Register
@@ -43,7 +43,7 @@ class Document():
     source: Source
     medium: Medium
     publication: Publication
-    criticized_themes: list[CriticizedTheme]
+    themes: list[Theme]
     aesthetic_paradigms: list[AestheticParadigm]
     aesthetic_patterns: list[AestheticPattern]
     registers: list[Register]
